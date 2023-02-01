@@ -11,6 +11,7 @@ class HerosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const AppBarTitle(
           title: 'Все герои',
         ),

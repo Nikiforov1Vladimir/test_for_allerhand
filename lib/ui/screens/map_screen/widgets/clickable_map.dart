@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'map_pop_up_content.dart';
+
 class ClickableMap extends StatelessWidget {
+
   final String mapImage;
   final VoidCallback onPressed;
 
@@ -13,7 +16,19 @@ class ClickableMap extends StatelessWidget {
     return Material(
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          showDialog(
+              context: context,
+              builder: (_) => const AlertDialog(
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 50
+                ),
+                content: MapPopUpContent(
+
+                ),
+              )
+          );
+        },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
           padding: const EdgeInsets.all(8.0),

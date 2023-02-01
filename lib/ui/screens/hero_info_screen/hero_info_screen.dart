@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:readmore/readmore.dart';
 import 'package:test_allerhands/ui/widgets/app_bar_title.dart';
+import 'package:test_allerhands/utils/constants/colors.dart';
+import 'package:test_allerhands/utils/constants/strings.dart';
 import 'package:video_player/video_player.dart';
 
 class HeroInfoScreen extends StatefulWidget {
@@ -19,7 +22,7 @@ class _HeroInfoScreenState extends State<HeroInfoScreen> {
         VideoPlayerController.asset('assets/videos/dtm_race.mp4')
           ..addListener(() => setState(() {}))
           ..setLooping(false)
-          ..initialize().then((value) => _videoPlayerController.play());
+          ..initialize().then((value) => _videoPlayerController.pause());
     super.initState();
   }
 
@@ -29,44 +32,93 @@ class _HeroInfoScreenState extends State<HeroInfoScreen> {
     super.dispose();
   }
 
+  final GlobalKey _rowKey = GlobalKey();
+  late double _rowHeight;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final RenderObject? renderBox = _rowKey.currentContext!.findRenderObject();
+      if(renderBox != null){
+        setState(() {
+          _rowHeight = 1;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AppBarTitle(
+        automaticallyImplyLeading: false,
+        title: const AppBarTitle(
           title: 'Фамилия Имя Отчество',
         ),
       ),
-      body: Padding(
+      body: ListView(
         padding: EdgeInsets.symmetric(
           horizontal: 350.w,
         ),
-        child: SizedBox(
-          width: 950.w,
-          child: Column(
+        children: [
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 'Lorem Ipsum dolor sit amet\nLorem Ipsum dolor sit ametLorem ipsum',
-                style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                  fontStyle: FontStyle.italic
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .labelLarge!
+                    .copyWith(fontStyle: FontStyle.italic),
               ),
               SizedBox(height: 30.h),
               SizedBox(
                   height: 500.h,
-                  child: HeroVideoPlayer(controller: _videoPlayerController)
-              ),
+                  width: 950.w,
+                  child: HeroVideoPlayer(controller: _videoPlayerController)),
               SizedBox(height: 30.h),
-              Text(
-                'Donec eu sagittis neque. Vestibulum porta eu nisl at varius. Sed congue fringilla lacinia. Sed ac est ac sem vulputate dapibus. Cras diam turpis, faucibus ac vehicula fermentum, volutpat ac mi.',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontStyle: FontStyle.italic
+              SizedBox(
+                width: 950.w,
+                child: Row(
+                  key: _rowKey,
+                  children: [
+                    Container(
+                      width: 6,
+                      color: AppColors.blue,
+                    ),
+                    SizedBox(width: 30.w),
+                    Expanded(
+                      child: ReadMoreText(
+                        AppStrings.heroScreenDescription,
+                       style: Theme.of(context)
+                           .textTheme
+                           .bodyMedium!
+                           .copyWith(fontStyle: FontStyle.italic
+                       ),
+                        trimCollapsedText: '\nЧитать полностью',
+                        trimExpandedText: ' Свернуть',
+                        moreStyle: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!.copyWith(
+                            fontStyle: FontStyle.normal,
+                            color: AppColors.blue
+                        ),
+                        lessStyle: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!.copyWith(
+                            fontStyle: FontStyle.normal,
+                            color: AppColors.blue
+                        ),
+                      )
+                    )
+                  ],
                 ),
               )
             ],
-          ),
-        ),
+          )
+        ],
       ),
     );
   }

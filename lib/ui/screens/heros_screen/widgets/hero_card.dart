@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_allerhands/ui/screens/heros_screen/widgets/hero_pop_up_dialog_content.dart';
-import 'package:test_allerhands/ui/widgets/pop_up_button.dart';
 import 'package:test_allerhands/utils/constants/strings.dart';
 
 class HeroCard extends StatelessWidget {
@@ -42,6 +41,7 @@ class HeroCard extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: 10.h,),
         Text(
             AppStrings.fio,
             textAlign: TextAlign.center,

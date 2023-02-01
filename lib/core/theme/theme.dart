@@ -45,6 +45,7 @@ class AppTheme{
       bodyMedium: TextStyle(
         fontSize: 32.sp,
         fontWeight: FontWeight.w400,
+        fontFamily: 'Montserrat',
       )
     )
   );

@@ -11,12 +11,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //была идея сделать это стаком и поместить на задний фон башни
       body: Stack(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              //была идея сделать это стаком и поместить на задний фон башни
               Flexible(child: Image.asset('assets/images/babylon_tower_1.png',)),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

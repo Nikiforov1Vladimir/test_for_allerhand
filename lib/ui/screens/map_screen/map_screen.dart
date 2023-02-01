@@ -1,11 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test_allerhands/core/navigation/app_router.gr.dart';
 import 'package:test_allerhands/ui/screens/map_screen/widgets/page_view_component.dart';
 import 'package:test_allerhands/ui/widgets/app_bar_title.dart';
 import 'package:test_allerhands/ui/widgets/app_material_button.dart';
-import 'package:test_allerhands/ui/widgets/leading_icon.dart';
-import 'package:test_allerhands/ui/widgets/title_row.dart';
 import 'package:test_allerhands/utils/constants/icons.dart';
+
+import 'repository/page_view_content.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -37,27 +39,18 @@ class _MapScreenState extends State<MapScreen> {
     'Второй этаж',
   ];
 
-  List<Widget> pageViewContent = [
-    PageViewComponent(
-      mapImage: 'assets/images/map_ground_floor.png',
-    ),
-    PageViewComponent(
-      mapImage: 'assets/images/map_first_floor.png',
-    ),
-    PageViewComponent(
-      mapImage: 'assets/images/map_second_floor.png',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: AppBarTitle(
           title: 'Карта',
           subTitle: floorNames[currentIndex],
           action: AppMaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              AutoRouter.of(context).push(const HerosScreenRoute());
+            },
             title: 'Все герои',
             icon: AppIcons.groupIcon,
             height: 80.h,

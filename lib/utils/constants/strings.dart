@@ -9,4 +9,6 @@ abstract class AppStrings{
   static const fio = 'Фамилия Длинноеимя\nОтчество';
   static const position = 'должность';
 
+  static const heroScreenDescription = 'Donec eu sagittis neque. Vestibulum porta eu nisl at varius. Sed congue fringilla lacinia. Sed ac est ac sem vulputate dapibus. Cras diam turpis, faucibus ac vehicula fermentum, volutpat ac miDonec eu sagittis neque. Vestibulum porta eu nisl at varius. Sed congue fringilla lacinia. Sed ac est ac sem vulputate dapibus. Cras diam turpis, faucibus ac vehicula fermentum, volutpat ac mi';
+
 }
