@@ -10,6 +10,7 @@ class AppMaterialButton extends StatelessWidget {
   final Color? iconColor;
   final Color? buttonColor;
   final double? width;
+  final double? height;
 
   const AppMaterialButton(
       {Key? key,
@@ -18,7 +19,8 @@ class AppMaterialButton extends StatelessWidget {
       required this.icon,
       this.iconColor,
       this.buttonColor,
-      this.width})
+      this.width,
+      this.height})
       : super(key: key);
 
   @override
@@ -26,12 +28,12 @@ class AppMaterialButton extends StatelessWidget {
     return Column(
       children: [
         MaterialButton(
-          height: 145.h,
+          height: height ?? 145.h,
           elevation: 0,
           minWidth: width ?? 200.w,
           color: buttonColor ?? AppColors.grey,
           onPressed: onPressed,
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 30),
+          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 30.w),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
           child: SvgPicture.asset(
@@ -44,7 +46,7 @@ class AppMaterialButton extends StatelessWidget {
         SizedBox(height: 14.h),
         Text(
           title,
-          style: Theme.of(context).textTheme.labelMedium,
+          style: Theme.of(context).textTheme.labelLarge,
         )
       ],
     );

@@ -15,8 +15,9 @@ class HomeScreen extends StatelessWidget {
       body: Stack(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Expanded(child: SizedBox()),
+              Flexible(child: Image.asset('assets/images/babylon_tower_1.png',)),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                   const BottomButtons(),
                 ],
               ),
-              const Expanded(child: SizedBox()),
+              Flexible(child: Image.asset('assets/images/babylon_tower_2.png')),
             ],
           )
         ],
