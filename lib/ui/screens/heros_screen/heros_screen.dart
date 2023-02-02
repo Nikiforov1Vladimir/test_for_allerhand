@@ -38,7 +38,6 @@ class HerosScreen extends StatelessWidget {
                   )
               ),
             ),
-            SizedBox(height: 20.h),
             Text('Название этажа',style: Theme.of(context).textTheme.headlineSmall,),
             SizedBox(height: 20.h),
             Expanded(

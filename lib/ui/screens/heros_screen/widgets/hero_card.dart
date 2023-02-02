@@ -20,6 +20,7 @@ class HeroCard extends StatelessWidget {
               showDialog(
                   context: context,
                   builder: (_) => AlertDialog(
+                    contentPadding: const EdgeInsets.all(50),
                     content: HeroPopUpDialogContent(
                       fio: AppStrings.fio,
                       position: AppStrings.position,

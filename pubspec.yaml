@@ -36,6 +36,7 @@ flutter:
     - assets/images/profile_pics/
     - assets/icons/
     - assets/icons/room_icons/
+    - assets/icons/video_player_icons/
     - assets/videos/
     - assets/fonts/
     - assets/videos/

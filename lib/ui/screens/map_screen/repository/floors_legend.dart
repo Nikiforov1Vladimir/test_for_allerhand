@@ -34,12 +34,10 @@ List<RoomLegend> groundFloorLegend = [
   RoomLegend(
       icons: ['assets/icons/room_icons/storage_square_icon.svg'],
       description: 'Lorem ipsum dolor sit amet'),
-  RoomLegend(
-      icons: [
-        'assets/icons/room_icons/m_toilet_square_icon.svg',
-        'assets/icons/room_icons/f_toilet_square_icon.svg',
-      ],
-      description: 'Lorem ipsum dolor sit amet'),
+  RoomLegend(icons: [
+    'assets/icons/room_icons/m_toilet_square_icon.svg',
+    'assets/icons/room_icons/f_toilet_square_icon.svg',
+  ], description: 'Lorem ipsum dolor sit amet'),
   RoomLegend(
       icons: ['assets/icons/room_icons/stairs_square_icon.svg'],
       description: 'Lorem ipsum dolor sit amet'),
@@ -55,15 +53,10 @@ List<RoomLegend> firstFloorLegend = [
           'Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet'),
   RoomLegend(number: '5', description: 'Lorem ipsum dolor sit amet'),
   RoomLegend(number: '6', description: 'Lorem ipsum dolor sit amet'),
-  RoomLegend(
-      number: '7',
-      description:
-          'Lorem ipsum dolor sit ametLorem ipsum dolor'),
+  RoomLegend(number: '7', description: 'Lorem ipsum dolor sit ametLorem ipsum dolor'),
   RoomLegend(number: '8', description: 'Lorem ipsum dolor sit amet'),
-  RoomLegend(
-      number: '9',
-      description:
-          'Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet'),
+  RoomLegend(number: '9',
+      description: 'Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet'),
   RoomLegend(
       number: '10',
       description: 'Lorem ipsum dolor sit ametLorem ipsum dolor sit amet'),

@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_allerhands/core/navigation/app_router.gr.dart';
-import 'package:test_allerhands/ui/screens/map_screen/widgets/page_view_component.dart';
 import 'package:test_allerhands/ui/widgets/app_bar_title.dart';
 import 'package:test_allerhands/ui/widgets/app_material_button.dart';
 import 'package:test_allerhands/utils/constants/icons.dart';

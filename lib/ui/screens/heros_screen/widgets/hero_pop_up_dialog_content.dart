@@ -18,37 +18,44 @@ class HeroPopUpDialogContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Center(
+          child: Image.asset(
             image,
-            height: 300.w,
-            width: 300.w,
+            height: 360.w,
+            width: 360.w,
             fit: BoxFit.cover,
           ),
-          SizedBox(height: 30.h),
-          Text(
-            fio,
-            style: Theme.of(context).textTheme.labelMedium,
+        ),
+        SizedBox(height: 30.h),
+        Text(
+          fio,
+          style: Theme.of(context).textTheme.labelMedium,
+          textAlign: TextAlign.start,
+        ),
+        SizedBox(height: 10.h),
+        Text('длинная $position',
             textAlign: TextAlign.start,
-          ),
-          SizedBox(height: 10.h),
-          Text('длинная $position',
-              textAlign: TextAlign.start,
-              style: Theme.of(context).textTheme.labelSmall),
-          SizedBox(height: 70.h),
-          PopUpButton(
+            style: Theme.of(context).textTheme.labelSmall),
+        SizedBox(height: 20.h),
+        Text('Lorem Ipsum',
+            textAlign: TextAlign.start,
+            style: Theme.of(context).textTheme.labelSmall
+        ),
+        SizedBox(height: 50.h),
+        Center(
+          child: PopUpButton(
             buttonText: 'Смотреть интервью',
+            horizontalPadding: 50.w,
             onPressed: () {
               AutoRouter.of(context).push(const HeroInfoScreenRoute());
             },
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }
