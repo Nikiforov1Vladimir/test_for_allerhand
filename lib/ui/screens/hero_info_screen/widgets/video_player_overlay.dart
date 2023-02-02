@@ -74,6 +74,7 @@ class VideoPlayerOverlay extends StatelessWidget {
                     ),
                     Slider(
                         value: controller.value.volume,
+                        activeColor: AppColors.blue,
                         onChanged: (value){
                           controller.setVolume(value);
                         }

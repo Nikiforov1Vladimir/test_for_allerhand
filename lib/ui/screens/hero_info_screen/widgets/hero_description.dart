@@ -13,9 +13,11 @@ class HeroDescription extends StatelessWidget {
       width: 950.w,
       child: Row(
         children: [
+          //пытался получить высоту через RenderObject и GlobalKey,но что-то так и не вышло
           Container(
-            width: 6,
+            width: 10.w,
             color: AppColors.blue,
+            height: 220.h,
           ),
           SizedBox(width: 30.w),
           Expanded(
