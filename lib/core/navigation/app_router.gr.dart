@@ -56,7 +56,7 @@ class AppRouter extends _i5.RootStackRouter {
         _i5.RouteConfig(
           '/#redirect',
           path: '/',
-          redirectTo: 'home_screen',
+          redirectTo: 'hero_info_screen',
           fullMatch: true,
         ),
         _i5.RouteConfig(

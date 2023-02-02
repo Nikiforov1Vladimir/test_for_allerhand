@@ -19,7 +19,7 @@ class BottomButtons extends StatelessWidget {
         AppMaterialButton(
           onPressed: () {},
           title: 'О нас',
-          icon: AppIcons.infoIcon,
+          icon: AppIcons.info,
         ),
         SizedBox(width: 50.w),
         AppMaterialButton(
@@ -27,7 +27,7 @@ class BottomButtons extends StatelessWidget {
             AutoRouter.of(context).push(const MapScreenRoute());
           },
           title: 'Карта',
-          icon: AppIcons.mapIcon,
+          icon: AppIcons.map,
           iconColor: AppColors.white,
           buttonColor: AppColors.blue,
           width: 300.w,
@@ -48,7 +48,7 @@ class BottomButtons extends StatelessWidget {
                 ),
             ),
             title: 'Инструкция',
-            icon: AppIcons.chatIcon,
+            icon: AppIcons.chat,
           ),
         )
       ],

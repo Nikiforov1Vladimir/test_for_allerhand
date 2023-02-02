@@ -51,7 +51,7 @@ class _MapScreenState extends State<MapScreen> {
               AutoRouter.of(context).push(const HerosScreenRoute());
             },
             title: 'Все герои',
-            icon: AppIcons.groupIcon,
+            icon: AppIcons.group,
             height: 80.h,
           ),
         ),

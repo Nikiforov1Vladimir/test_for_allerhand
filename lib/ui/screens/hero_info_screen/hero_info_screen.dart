@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:readmore/readmore.dart';
+import 'package:test_allerhands/ui/screens/hero_info_screen/widgets/hero_description.dart';
+import 'package:test_allerhands/ui/screens/hero_info_screen/widgets/pause_state.dart';
+import 'package:test_allerhands/ui/screens/hero_info_screen/widgets/video_player_time.dart';
 import 'package:test_allerhands/ui/widgets/app_bar_title.dart';
+import 'package:test_allerhands/ui/widgets/app_icon_button.dart';
 import 'package:test_allerhands/utils/constants/colors.dart';
-import 'package:test_allerhands/utils/constants/strings.dart';
+import 'package:test_allerhands/utils/constants/icons.dart';
 import 'package:video_player/video_player.dart';
+
+import 'widgets/video_player.dart';
 
 class HeroInfoScreen extends StatefulWidget {
   const HeroInfoScreen({Key? key}) : super(key: key);
@@ -16,13 +21,18 @@ class HeroInfoScreen extends StatefulWidget {
 class _HeroInfoScreenState extends State<HeroInfoScreen> {
   late VideoPlayerController _videoPlayerController;
 
+  double videoVolume = 1.0;
+  late bool isMuted;
+
   @override
   void initState() {
     _videoPlayerController =
         VideoPlayerController.asset('assets/videos/dtm_race.mp4')
           ..addListener(() => setState(() {}))
           ..setLooping(false)
+          ..setVolume(videoVolume)
           ..initialize().then((value) => _videoPlayerController.pause());
+    isMuted = _videoPlayerController.value.volume == 0;
     super.initState();
   }
 
@@ -34,19 +44,6 @@ class _HeroInfoScreenState extends State<HeroInfoScreen> {
 
   final GlobalKey _rowKey = GlobalKey();
   late double _rowHeight;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final RenderObject? renderBox = _rowKey.currentContext!.findRenderObject();
-      if(renderBox != null){
-        setState(() {
-          _rowHeight = 1;
-        });
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,66 +74,84 @@ class _HeroInfoScreenState extends State<HeroInfoScreen> {
               SizedBox(
                   height: 500.h,
                   width: 950.w,
-                  child: HeroVideoPlayer(controller: _videoPlayerController)),
+                  child: Stack(
+                    children: [
+                      HeroVideoPlayer(
+                          controller: _videoPlayerController
+                      ),
+                      Builder(
+                        builder: (context){
+                          if(_videoPlayerController.value.isPlaying){
+                            return GestureDetector(
+                              onDoubleTap: (){
+                                _videoPlayerController.pause();
+                              },
+                            );
+                          }
+                          else{
+                            return Stack(
+                              children: [
+                                PauseState(
+                                    onPressed: (){
+                                      setState(() {
+                                        _videoPlayerController.play();
+                                      });
+                                    }
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 20.w
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          AppIconButton(
+                                            icon: isMuted
+                                                ? AppIcons.volumeOffIcon
+                                                : AppIcons.volume,
+                                            onPressed: () {
+                                              _videoPlayerController.setVolume(isMuted ? 1 : 0);
+                                              setState((){
+                                                isMuted = !isMuted;
+                                              });
+                                            }
+                                          ),
+                                          const Spacer(),
+                                          VideoPlayerTime(
+                                            timePassed: _videoPlayerController.value.position,
+                                            videoLength: _videoPlayerController.value.duration,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:20.h,
+                                      child: VideoProgressIndicator(
+                                          _videoPlayerController,
+                                          colors: const VideoProgressColors(
+                                            playedColor: AppColors.blue
+                                          ),
+                                          allowScrubbing: true
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ],
+                            );
+                          }
+                        },
+                      ),
+                    ],
+                  )
+              ),
               SizedBox(height: 30.h),
-              SizedBox(
-                width: 950.w,
-                child: Row(
-                  key: _rowKey,
-                  children: [
-                    Container(
-                      width: 6,
-                      color: AppColors.blue,
-                    ),
-                    SizedBox(width: 30.w),
-                    Expanded(
-                      child: ReadMoreText(
-                        AppStrings.heroScreenDescription,
-                       style: Theme.of(context)
-                           .textTheme
-                           .bodyMedium!
-                           .copyWith(fontStyle: FontStyle.italic
-                       ),
-                        trimCollapsedText: '\nЧитать полностью',
-                        trimExpandedText: ' Свернуть',
-                        moreStyle: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!.copyWith(
-                            fontStyle: FontStyle.normal,
-                            color: AppColors.blue
-                        ),
-                        lessStyle: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!.copyWith(
-                            fontStyle: FontStyle.normal,
-                            color: AppColors.blue
-                        ),
-                      )
-                    )
-                  ],
-                ),
-              )
+              const HeroDescription()
             ],
           )
         ],
       ),
     );
-  }
-}
-
-class HeroVideoPlayer extends StatelessWidget {
-  final VideoPlayerController controller;
-
-  const HeroVideoPlayer({Key? key, required this.controller}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    if (controller != null && controller.value.isInitialized) {
-      return AspectRatio(
-          aspectRatio: controller.value.aspectRatio,
-          child: VideoPlayer(controller));
-    } else {
-      return Center(child: CircularProgressIndicator());
-    }
   }
 }
