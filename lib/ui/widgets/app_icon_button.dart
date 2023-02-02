@@ -13,8 +13,9 @@ class AppIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(12.0),
       child: IconButton(
+          padding: EdgeInsets.zero,
           onPressed: onPressed,
           icon: SvgPicture.asset(
             icon,

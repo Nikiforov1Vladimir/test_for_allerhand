@@ -17,21 +17,18 @@ class PauseState extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              AppColors.black,
+              Colors.black,
               Colors.transparent,
-              AppColors.black
+              Colors.black
             ]
           )
       ),
-      child: Stack(
-        children: [
-          Center(
-            child: AppIconButton(
-                icon: AppIcons.play,
-                onPressed: onPressed
-            ),
-          ),
-        ],
+      child: Center(
+        child: AppIconButton(
+            icon: AppIcons.play,
+            iconSize: 60,
+            onPressed: onPressed
+        ),
       ),
     );
   }

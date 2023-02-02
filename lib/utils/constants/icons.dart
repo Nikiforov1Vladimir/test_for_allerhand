@@ -8,11 +8,11 @@ abstract class AppIcons{
 
   //videoplayer icons
   static const String play = 'assets/icons/video_player_icons/play_icon.svg';
-  static const String close = 'assets/icons/video_player_icons/close_icons.svg';
-  static const String backTenSec = 'assets/icons/video_player_icons/back_10_sec.svg';
+  static const String close = 'assets/icons/video_player_icons/close_icon.svg';
+  static const String backTenSec = 'assets/icons/video_player_icons/back_10_sec_icon.svg';
   static const String collapse = 'assets/icons/video_player_icons/collapse_icon.svg';
   static const String expand = 'assets/icons/video_player_icons/expand_icon.svg';
-  static const String forwardTenSec = 'assets/icons/video_player_icons/forward_10_sec_icon';
+  static const String forwardTenSec = 'assets/icons/video_player_icons/forward_10_sec_icon.svg';
   static const String volume = 'assets/icons/video_player_icons/volume_icon.svg';
   static const String volumeOffIcon = 'assets/icons/video_player_icons/volume_off_icon.svg';
 
