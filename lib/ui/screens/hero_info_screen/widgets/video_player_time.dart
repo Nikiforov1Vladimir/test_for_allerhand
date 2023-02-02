@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_allerhands/utils/constants/colors.dart';
 
+extension on Duration {
+  String format() => '$this'.split('.')[0].padLeft(8, '0');
+}
+
 class VideoPlayerTime extends StatelessWidget {
   final Duration timePassed;
   final Duration videoLength;
@@ -13,10 +17,7 @@ class VideoPlayerTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      '${timePassed.inHours == 0 ? '' : '${timePassed.inHours} / '}${timePassed.inMinutes.remainder(60)}:${(timePassed.inSeconds.remainder(60))}'
-      ' / '
-      '${videoLength.inHours == 0 ? '' : '${videoLength.inHours} / '}${videoLength.inMinutes.remainder(60)}:${(timePassed.inSeconds.remainder(60))}',
-      // '$timePassed / $videoLength',
+      '${timePassed.format()} / ${videoLength.format()}',
       style: TextStyle(
           fontSize: 40.sp,
           fontWeight: FontWeight.w600,

@@ -7,12 +7,13 @@ import 'package:test_allerhands/ui/screens/home_screen/home_screen.dart';
 import 'package:test_allerhands/ui/screens/map_screen/map_screen.dart';
 
 @CupertinoAutoRouter(
-  //replaceInRouteName: 'Page,Route',
+
   routes: <AutoRoute>[
-    AutoRoute(path: 'home_screen', page: HomeScreen),
+
+    AutoRoute(path: 'home_screen', page: HomeScreen,initial: true),
     AutoRoute(path: 'map_screen', page: MapScreen),
     AutoRoute(path: 'heros_screen', page: HerosScreen),
-    AutoRoute(path: 'hero_info_screen', page: HeroInfoScreen,initial: true)
+    AutoRoute(path: 'hero_info_screen', page: HeroInfoScreen)
 
   ],
 )

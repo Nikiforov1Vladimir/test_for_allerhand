@@ -55,7 +55,7 @@ class _HeroInfoScreenState extends State<HeroInfoScreen> {
     return fullScreenMode
         ? FullScreenVideoPlayer(
             videoPlayerController: _videoPlayerController,
-            closeButtonPressed: closeButtonPressed
+            closeButtonPressed: closeButtonPressed,
         )
         : WindowedVideoPlayer(
         videoPlayerController: _videoPlayerController,

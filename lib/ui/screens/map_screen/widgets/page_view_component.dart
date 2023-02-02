@@ -65,8 +65,8 @@ class PageViewComponent extends StatelessWidget {
                                       children: roomsLegend[index]
                                           .icons!
                                           .map((e) => SizedBox(
-                                              height: 40,
-                                              width: 40,
+                                              height: 60.w,
+                                              width: 60.w,
                                               child: SvgPicture.asset(e)))
                                           .toList(),
                                     );
